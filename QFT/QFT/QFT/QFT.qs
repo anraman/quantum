@@ -106,12 +106,12 @@
 				
 				// Next, we repeatedly apply the rotation operator. 
 				// Qubits later in the register have fewer rotations applied as can be seen from the circuit diagram.
-				// When numQubits - 1 < 2, the for loop doesn't run and therefore only the Hadamard is applied to 
+				// When numQubits - i < 2, the for loop doesn't run and therefore only the Hadamard is applied to 
 				// the last qubit.
 				for (j in 2..numQubits - i) {
 					(Controlled RFrac)([register[j-1]], (PauliZ, 2, j, register[i]));
 				}
-			}
+			} 
 
 			// SWAP each opposite pair of qubits to complete the final step
 			// numQubits/2 will always round towards zero so we don't need to use a floor function in case of odd numQubits
