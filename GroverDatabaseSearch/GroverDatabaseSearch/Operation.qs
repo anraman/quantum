@@ -36,7 +36,8 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch {
     // # Create uniform superposition |u〉 = |++...+〉 = |0〉 + |1〉 + ... + |N-1〉 by bitwise application of the Hadamard
     // ## |0〉 = |00...0〉, |1〉 = |00...1〉, ..., |N-1〉 = |11...1〉
     // # |m〉 is our marked qubit, initially in state |0〉 as well
-    // # Apply the oracle to |m〉|u〉. |m〉 is flipped with the X operation if and only if the database register |u〉 is in state |N-1〉 = |11...1〉
+    // # Apply the oracle to |m〉|u〉. |m〉 is flipped to |1〉 using the X operation if and only if the database register
+	// |u〉 is in state |N-1〉 = |11...1〉
     operation StatePreparationOracle(markedQubit: Qubit, databaseRegister: Qubit[]) : () {
         body {
             // Starting state
@@ -52,7 +53,7 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch {
         adjoint auto
     }
 
-    // Apply a rotation that has the effect of applying a -1 phase to the marked element only.
+    // Apply a rotation that has the effect of applying a -1 phase to amplitude of the marked element only
     // This has no effect on unmarked elements. All probability amplitudes remain the same during
     // this transformation, just the phase changes (this has no effect on measurement probabilities)
     operation ReflectMarked(markedQubit : Qubit) : (){
