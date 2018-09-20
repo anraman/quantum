@@ -145,8 +145,6 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch {
                         X(databaseRegister[idxResult]);
                     }
                 }
-
-				var x = new Qubit();
             }
 
             // Returns the measurement results of the algorithm.

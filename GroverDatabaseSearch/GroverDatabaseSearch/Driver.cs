@@ -31,7 +31,7 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch
 
             #endregion
 
-            #region Random Database Search with Manual Oracle Definitions
+            #region Random (Classical) Database Search
 
             // Let us investigate the success probability of classical random search.
             // This corresponds to the case where we only prepare the start state, and
@@ -96,8 +96,7 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch
 
             #endregion
 
-
-            #region Quantum Database Search with Manual Oracle Definitions
+            #region Quantum Database Search
 
             // Let us investigate the success probability of the quantum search.
 
@@ -120,7 +119,7 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch
             successCount = 0;
 
             Console.Write(
-                $"\n\nQuantum search for marked element in database. Number of Grover iterations: {nIterations}\n" +
+                $"\nQuantum search for marked element in database. Number of Grover iterations: {nIterations}\n" +
                 $"  Database size: {databaseSize}\n" +
                 $"  Classical success probability: {classicalSuccessProbability}\n" +
                 //$"  Queries per search: {queries} \n" +
