@@ -84,9 +84,9 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch
                     }
 
                     Console.Write(
-                        $"Attempt {idxAttempt}. " +
-                        $"Success: {success},  " +
-                        $"Probability: {Math.Round((double)successCount / ((double)idxAttempt + 1), 3)} " +
+                        $"Attempt: {idxAttempt}. " +
+                        $"Success: {success}. " +
+                        $"Probability: {Math.Round((double)successCount / ((double)idxAttempt + 1), 3)}. " +
                         $"Found database index {string.Join(", ", databaseRegister.Select(x => x.ToString()).ToArray())} \n");
                 }
             }
@@ -160,10 +160,10 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch
                     var speedupFactor = Math.Round(empiricalSuccessProbability / classicalSuccessProbability / (double)queries, 3);
 
                     Console.Write(
-                        $"Attempt {idxAttempt} " +
-                        $"Success: {success},  " +
-                        $"Probability: {empiricalSuccessProbability} " +
-                        $"Speedup: {speedupFactor} " +
+                        $"Attempt: {idxAttempt}. " +
+                        $"Success: {success}.  " +
+                        $"Probability: {empiricalSuccessProbability}. " +
+                        $"Speedup: {speedupFactor}. " +
                         $"Found database index {string.Join(", ", databaseRegister.Select(x => x.ToString()).ToArray())} \n");
                 }
             }
