@@ -41,19 +41,18 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch
             // We now define the size `N` = 2^n of the database to search in terms of 
             // number of qubits `n`
             var nDatabaseQubits = 6;
+
+            // 2^6 = 64
             var databaseSize = Math.Pow(2.0, nDatabaseQubits);
 
-            // We now execute the classical random search and verify that the success 
-            // probability matches the classical result of 1/N. 
-            // Repeat 100 times to collect enough data
-            var classicalSuccessProbability = 1.0 / databaseSize;
+            // We now execute the classical random search.
+            // Repeat 1000 times to collect enough data.
             var repeats = 1000;
             var successCount = 0;
 
             Console.Write(
                 $"Classical random search for marked element in database. No Grover iterations performed hence no amplitude amplification.\n" +
                 $"  Database size: {databaseSize}\n" +
-                $"  Success probability:  {classicalSuccessProbability}\n" +
                 $"  Looking for marked element: One One One One One One\n\n");
 
 
@@ -87,7 +86,7 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch
                         $"Attempt: {idxAttempt}. " +
                         $"Success: {success}. " +
                         $"Probability: {Math.Round((double)successCount / ((double)idxAttempt + 1), 3)}. " +
-                        $"Found database index {string.Join(", ", databaseRegister.Select(x => x.ToString()).ToArray())} \n");
+                        $"Found database index: {string.Join(", ", databaseRegister.Select(x => x.ToString()).ToArray())} \n");
                 }
             }
             Console.Write($"\nTotal success count over {repeats} attempts: {successCount}.\n");
@@ -111,19 +110,13 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch
             // Number of queries to database oracle.
             var queries = nIterations * 2 + 1;
 
-            // We now execute the quantum search and verify that the success 
-            // probability matches the theoretical prediction. 
-            classicalSuccessProbability = 1.0 / databaseSize;
-            var quantumSuccessProbability = Math.Pow(Math.Sin((2.0 * (double)nIterations + 1.0) * Math.Asin(1.0 / Math.Sqrt(databaseSize))), 2.0);
+            // We now execute the quantum search.
             repeats = 1000;
             successCount = 0;
 
             Console.Write(
                 $"\nQuantum search for marked element in database. Number of Grover iterations: {nIterations}\n" +
                 $"  Database size: {databaseSize}\n" +
-                $"  Classical success probability: {classicalSuccessProbability}\n" +
-                //$"  Queries per search: {queries} \n" +
-                $"  Quantum success probability: {quantumSuccessProbability}\n" +
                 $"  Looking for marked element: One One One One One One\n\n");
 
 
@@ -153,18 +146,10 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch
                         success = true;
                     }
 
-                    var empiricalSuccessProbability = Math.Round((double)successCount / ((double)idxAttempt + 1), 3);
-
-                    // This is how much faster the quantum algorithm performs on average
-                    // over the classical search.
-                    var speedupFactor = Math.Round(empiricalSuccessProbability / classicalSuccessProbability / (double)queries, 3);
-
                     Console.Write(
                         $"Attempt: {idxAttempt}. " +
                         $"Success: {success}.  " +
-                        $"Probability: {empiricalSuccessProbability}. " +
-                        $"Speedup: {speedupFactor}. " +
-                        $"Found database index {string.Join(", ", databaseRegister.Select(x => x.ToString()).ToArray())} \n");
+                        $"Found database index: {string.Join(", ", databaseRegister.Select(x => x.ToString()).ToArray())} \n");
                 }
             }
 
