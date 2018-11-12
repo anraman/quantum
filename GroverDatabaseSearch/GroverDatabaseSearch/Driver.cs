@@ -4,6 +4,7 @@
 
 using Microsoft.Quantum.Simulation.Core;
 using Microsoft.Quantum.Simulation.Simulators;
+using Microsoft.Quantum.Simulation.Simulators.QCTraceSimulators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,12 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch
             // machine.
             var sim = new QuantumSimulator(throwOnReleasingQubitsNotInZeroState: true);
 
+            var config = new QCTraceSimulatorConfiguration
+            {
+                useDistinctInputsChecker = true
+            };
+            var tracerSim = new QCTraceSimulator(config);
+            
             #endregion
 
             #region Random (Classical) Database Search
