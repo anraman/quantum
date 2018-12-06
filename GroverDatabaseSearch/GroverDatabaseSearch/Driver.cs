@@ -17,7 +17,7 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch
         public static void Pause()
         {
             System.Console.WriteLine("\nPress any key to continue...\n");
-            System.Console.ReadKey();
+            System.Console.Read();
         }
 
         static void Main(string[] args)
@@ -91,7 +91,7 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch
             }
             Console.Write($"\nTotal success count over {repeats} attempts: {successCount}.\n");
 
-            Pause();
+            //Pause();
 
             #endregion
 
@@ -113,7 +113,7 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch
             // We now execute the quantum search.
             repeats = 1000;
             successCount = 0;
-
+            
             Console.Write(
                 $"\nQuantum search for marked element in database. Number of Grover iterations: {nIterations}\n" +
                 $"  Database size: {databaseSize}\n" +
