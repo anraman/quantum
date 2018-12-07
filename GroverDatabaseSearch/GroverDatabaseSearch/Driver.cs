@@ -14,12 +14,6 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch
 {
     class Program
     {
-        public static void Pause()
-        {
-            System.Console.WriteLine("\nPress any key to continue...\n");
-            System.Console.Read();
-        }
-
         static void Main(string[] args)
         {
 
@@ -51,7 +45,7 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch
             var successCount = 0;
 
             Console.Write(
-                $"Classical random search for marked element in database. No Grover iterations performed hence no amplitude amplification.\n" +
+                $"Classical random search for marked element in database (no Grover iterations).\n" +
                 $"  Database size: {databaseSize}\n" +
                 $"  Looking for marked element: One One One One One One\n\n");
 
@@ -90,8 +84,6 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch
                 }
             }
             Console.Write($"\nTotal success count over {repeats} attempts: {successCount}.\n");
-
-            //Pause();
 
             #endregion
 
@@ -155,7 +147,8 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch
 
             Console.Write($"\nTotal success count over {repeats} attempts: {successCount}.\n");
 
-            Pause();
+            Console.WriteLine("\nPress any key to exit.\n");
+            Console.ReadKey();
 
             #endregion
         }
