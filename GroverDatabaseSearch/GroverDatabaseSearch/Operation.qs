@@ -48,9 +48,10 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch {
         body (...) {
             // Starting state
             // |0〉|00...0〉
-            UniformSuperpositionOracle(databaseRegister);
             
+            UniformSuperpositionOracle(databaseRegister);
             // |0〉|++...+〉 = 1/√N * |0〉(|0〉 + |1〉 + ... + |N-1〉)
+
             DatabaseOracle(markedQubit, databaseRegister);
             // |s〉 = 1/√N * |0〉(|0〉 + |1〉 + ... + |N-2〉) + 1/√N * |1〉|N-1〉
         }
@@ -64,7 +65,7 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch {
     // this transformation, just the phase changes (this has no effect on measurement probabilities)
     operation ReflectMarked (markedQubit : Qubit) : Unit {
         
-        // Marked elements always have the marked qubit in the state |1〉.
+        // Marked elements always have the marked qubit in the state |1〉
         R1(PI(), markedQubit);
     }
     
@@ -108,7 +109,7 @@ namespace Microsoft.Quantum.Samples.DatabaseSearch {
         
         StatePreparationOracle(markedQubit, databaseRegister);
         
-        // Loop over Grover iterates.
+        // Perform Grover iterations
         for (idx in 0 .. nIterations - 1) {
             ReflectMarked(markedQubit);
             ReflectStart(markedQubit, databaseRegister);
