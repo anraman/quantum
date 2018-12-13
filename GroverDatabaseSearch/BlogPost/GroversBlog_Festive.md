@@ -1,6 +1,6 @@
 # Gro-ho-ho-ver's Algorithm - How Quantum Computing Saved Christmas
 
-> The non-festive version of this post can be found [here](./GroversBlog_Regular.md).
+> This post is part of the [Q# Advent Calendar](https://blogs.msdn.microsoft.com/visualstudio/2018/11/15/q-advent-calendar-2018/) series - the non-festive version of this post can be found [here](./GroversBlog_Regular.md).
 
 If you’ve been reading into quantum computing you’ve probably come across something called [Grover’s algorithm](https://en.wikipedia.org/wiki/Grover's_algorithm). Grover’s algorithm is famously applied to the search of an unordered database but it is applicable across a wide range of problems (such as [nearest neighbour classification](https://arxiv.org/pdf/1401.2142.pdf) in machine learning, for example) – even helping Santa find the right present in his sack!
 
