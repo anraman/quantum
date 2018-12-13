@@ -16,12 +16,12 @@ In this post we will explore how Grover’s algorithm works in a bit more detail
 
 First, let’s define the problem:
 
-- **We have:** Santa's sack with N unsorted presents
+- **We have:** Santa's sack with N unsorted presents in it
 - **We want to:** Find the present for child *k* (0 ≤ *k* ≤ N-1) - the *k*th present is our ‘marked element’
 - **We need:** *n* qubits to represent this information (remember each qubit can represent two bits of information so to represent N presents we need *n* qubits such that 2*ⁿ* ≥ N)
 - **We start with:** All the qubits in our register initialised to a simple starting state, in this case all Zeroes, like so: |000…00〉
 
-For the purposes of this blog post, we will assume that Santa’s sack has eight presents in it, which means we will need three qubits (2³ = 8) in our register. We will be looking for present number eight (represented by |7〉) in this example – this is our marked element.
+For the purposes of this blog post, we will assume that Santa’s sack has eight presents in it, which means we will need **three** qubits (2³ = 8) in our register. We will be looking for present number eight (represented by |7〉, because we start at index 0) in this example – this is our marked element.
 
 ## Step 1: Prepare States for Search
 
@@ -177,7 +177,7 @@ operation QuantumSearch (nIterations : Int, markedQubit : Qubit, databaseRegiste
 
 ## Final Step: Try it for yourself!
 
-All the code shown so far is available on GitHub [here](https://github.com/anraman/quantum/tree/master/GroverDatabaseSearch) - feel free to download and run the sample for yourself (instructions in the readme). The program does two things:
+All the code shown so far is available [here](https://github.com/anraman/quantum/tree/master/GroverDatabaseSearch) on GitHub - feel free to download and run the sample for yourself (instructions in the readme). The program does two things:
 
 - First, it runs a classical search 1000 times (i.e. measuring the register in balanced superposition without performing any Grover iterations) and prints the result.
 - Second, it runs the quantum search 1000 times with three Grover iterations per run and prints this result for comparison. Try modifying the number of Grover iterations to see how this affects the success rate of the search!
