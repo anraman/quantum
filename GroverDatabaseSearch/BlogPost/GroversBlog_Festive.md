@@ -64,7 +64,7 @@ operation UniformSuperpositionOracle (databaseRegister : Qubit[]) : Unit {
 }
 ```
 
-We then need to mark the present we are looking for using a single ancillary qubit which we will flip from state |0〉 to |1〉 if and only if the register is in the state we are looking for (in this case, |7〉 = |111〉):
+We then need to mark the present we are looking for using a single [ancillary qubit](https://en.wikipedia.org/wiki/Ancilla_bit) which we will flip from state |0〉 to |1〉 if and only if the register is in the state we are looking for (in this case, |7〉 = |111〉):
 
 ```csharp
 // Oracle that flips the marked qubit from |0〉 to |1〉 if and only if
@@ -97,7 +97,15 @@ operation StatePreparationOracle (markedQubit : Qubit, databaseRegister : Qubit[
 }
 ```
 
-The ancillary qubit is the single qubit you see before the register qubits in the comments above – we can see that after the last operation (`DatabaseOracle`) the state of this marker qubit is |1〉 for the marked present (|N-1〉 = |8-1〉 = |7〉) and |0〉 for all other presents. 
+The ancillary qubit is the single qubit you see before the register qubits in the comments above, highlighted in bold below:
+
+**|0〉**|00...0〉
+
+**|0〉**|++...+〉 = 1/√N * **|0〉**(|0〉 + |1〉 + ... + |N-1〉)
+
+**|0〉**(|0〉 + |1〉 + ... + |N-2〉) + 1/√N * **|1〉**|N-1〉
+
+We can see that after the last operation (`DatabaseOracle`) the state of this marker qubit is |1〉 for the marked present (|N-1〉 = |8-1〉 = |7〉 in the register) and |0〉 for all other presents.
 
 The term oracle is used to refer to any ‘black box’ process that is used as input to another algorithm – you can read more about quantum oracles [here](https://docs.microsoft.com/en-us/quantum/concepts/oracles?view=qsharp-preview).
 
@@ -109,7 +117,7 @@ During this transformation, all probability amplitudes remain the same – only 
 
 ![Phase shifted superposition](./Images/PhaseShiftedSuperpos.png)
 
-As we can see from the above, only the sign of the probability amplitude for our marked present has changed because of this operation – the bars are still all the same height (they still have the same magnitude). In code, this reflection looks like this:
+As we can see from the above, only the sign (phase) of the probability amplitude for our marked present has changed because of this operation – the bars are still all the same size (they still have the same magnitude) hence the measurement probabilities have not changed. In code, this reflection looks like this:
 
 ```csharp
 // Apply a rotation that has the effect of applying a -1
@@ -122,7 +130,10 @@ operation ReflectMarked (markedQubit : Qubit) : Unit {
 
 ## Step 3: Invert about the average (reflect about the start state)
 
-The next step – also known as the diffusion operator – influences the probability amplitudes of all the presents in the register by inverting around the average. This has the effect of taking the difference from the average probability amplitude and subtracting this value from each bar (in the case that the difference is negative (i.e. Δ₂ below), this results in an addition). 
+The next step – also known as the diffusion operator – influences the probability amplitudes of all the presents in the register by inverting around the average. This has the effect of taking the difference from the average probability amplitude and subtracting this value from each bar:
+
+- In the case where the difference is positive (e.g. Δ₁ below), this results in a subtraction which reduces (dampens) the probability amplitude for the state in question
+- In the case where the difference is negative (i.e. Δ₂ below), this results in an addition which increases (amplifies) the probability amplitude for the state in question
 
 This process is perhaps more easily understood through illustration:
 

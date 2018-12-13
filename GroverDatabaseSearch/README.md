@@ -1,7 +1,7 @@
 # Grover's Search Algorithm
 
 - Simplified code implementing Grover's search algorithm based on [this](https://github.com/Microsoft/Quantum/tree/master/Samples/DatabaseSearch) official Microsoft Quantum sample
-- For an explanation of how the algorithm works, please see my post on the [Q# Advent Calendar 2018](https://blogs.msdn.microsoft.com/visualstudio/2018/11/15/q-advent-calendar-2018/)
+- For an explanation of how the algorithm works, please see my blog post [here](./BlogPost/GroversBlog_Regular.md) (or [here](./BlogPost/GroversBlog_Festive.md) for the festive version!)
 
 ## Instructions
 
