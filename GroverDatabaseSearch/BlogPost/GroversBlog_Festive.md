@@ -1,4 +1,4 @@
-# Gro-ho-ho-ver's Algorithm - How Quantum Computing Saved Christmas
+# Gro-ho-ho-ver's Algorithm: How Quantum Computing Saved Christmas
 
 > This post is part of the [Q# Advent Calendar](https://blogs.msdn.microsoft.com/visualstudio/2018/11/15/q-advent-calendar-2018/) series - the non-festive version of this post can be found [here](./GroversBlog_Regular.md).
 
